@@ -1,0 +1,29 @@
+# Specifies whether to add lore when an event happens.
+listeners:
+  # When an inventory is opened. Doesn't include player inventory, but only inventories like chests.
+  # It scans every item in the inventory and adds a lore if it's a workbench.
+  inventory_opened: false
+  # When a workbench is crafted.
+  item_crafted: true
+  # Adds lore to every workbench in the inventory of a player that joins a game.
+  player_joined: false
+  # Adds lore when an item in the inventory is clicked.
+  # Includes, e.g., item received from the creative mode inventory.
+  item_clicked: true
+  # When a workbench is picked up by a player.
+  # Includes items picked up after breaking a block.
+  item_pickup: true
+# Messages the plugin uses.
+messages:
+  # Output of the /fastcrafting info command.
+  info: |-
+    &7FastCrafting {VERSION} installed.
+
+    &9/fastcrafting [info] &r— shows this help message
+    &9/fastcrafting reload &r— reloads config
+  # After the config is reloaded.
+  config_reloaded: "&aConfig reloaded!"
+  # If player doesn't have the necessary permission, trying to run a command.
+  no_permission: "&cYou have no permission to run this command"
+  # Lore of every workbench in the game. If empty, will remove the lore.
+  workbench_lore: "&7Click with right mouse button to open."

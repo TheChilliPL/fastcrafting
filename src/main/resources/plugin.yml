@@ -1,0 +1,28 @@
+name: FastCrafting
+version: 1.0.0
+main: me.patrykanuszczyk.spigot.fastcrafting.FastCraftingPlugin
+description: Allows you to open workbench by clicking RMB on it in the inventory!
+author: TheChilliPL
+api-version: "1.13"
+commands:
+  fastcrafting:
+    description: Command for FastCrafting plugin
+    usage: /fastcrafting <[info]/reload>
+permissions:
+  fastcrafting.*:
+    description: Wildcard for every other permission of this plugin
+    default: false
+    children:
+      fastcrafting.commands.*: true
+  fastcrafting.commands.*:
+    description: Wildcard for every command permission of this plugin
+    default: false
+    children:
+      fastcrafting.commands.info: true
+      fastcrafting.commands.reload: true
+  fastcrafting.commands.info:
+    description: Allows to check info and version of this plugin using /fastcrafting [info]
+    default: true
+  fastcrafting.commands.reload:
+    description: Allows to reload the config of this plugin
+    default: op
