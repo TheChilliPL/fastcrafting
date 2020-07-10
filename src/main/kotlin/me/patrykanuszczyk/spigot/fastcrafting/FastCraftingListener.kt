@@ -35,6 +35,7 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
         if(stack.type != Material.CRAFTING_TABLE) return false
         val meta = stack.itemMeta
         if(meta?.hasLore() != true) return true
+        if(meta.lore!!.contains(plugin.getMessage("workbench_lore"))) return true
         val tagValue = meta.customTagContainer.getOrDefault(plugin.workbenchTagKey, ItemTagType.INTEGER, 0)
         return tagValue != 0
     }
