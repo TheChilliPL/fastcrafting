@@ -57,7 +57,7 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
     }
 
     @EventHandler
-    fun onPLayerJoin(event: PlayerJoinEvent) {
+    fun onPlayerJoin(event: PlayerJoinEvent) {
         if(!plugin.config.getBoolean("listeners.player_joined", false)) return
 
         modifyWorkbenches(event.player.inventory)
