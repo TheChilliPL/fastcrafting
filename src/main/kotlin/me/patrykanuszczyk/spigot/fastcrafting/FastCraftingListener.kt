@@ -21,7 +21,10 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
 
     private fun modifyWorkbench(stack: ItemStack) {
         val meta = stack.itemMeta ?: return
-        meta.customTagContainer.setCustomTag(plugin.workbenchTagKey, ItemTagType.INTEGER, 1)
+        if(plugin.config.getBoolean("use_nbt", true))
+            meta.customTagContainer.setCustomTag(plugin.workbenchTagKey, ItemTagType.INTEGER, 1)
+        else
+            meta.customTagContainer.removeCustomTag(plugin.workbenchTagKey)
         val lore = plugin.getMessage("workbench_lore")
         meta.lore = if(lore.isEmpty()) emptyList() else listOf(plugin.getMessage("workbench_lore"))
         stack.itemMeta = meta
