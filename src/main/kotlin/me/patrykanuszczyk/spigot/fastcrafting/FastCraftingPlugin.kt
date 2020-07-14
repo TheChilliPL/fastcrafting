@@ -62,7 +62,7 @@ class FastCraftingPlugin : JavaPlugin() {
                 if(config.getBoolean("use_nbt", true)) "yes" else "no"
             })
             addCustomChart(Metrics.SimplePie("workbench_lore") {
-                if((config.getString("workbench_lore")?:"").isNotBlank()) "set" else "none"
+                if((config.getString("messages.workbench_lore")?:"").isNotBlank()) "set" else "none"
             })
         }
     }
