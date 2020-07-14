@@ -1,4 +1,4 @@
-# Specifies whether to add lore when an event happens.
+# Specifies whether to add lore and NBT when an event happens (or remove them if they're disabled).
 listeners:
   # When an inventory is opened. Doesn't include player inventory, but only inventories like chests.
   # It scans every item in the inventory and adds a lore if it's a workbench.
