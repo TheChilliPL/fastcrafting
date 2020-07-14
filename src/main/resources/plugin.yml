@@ -1,5 +1,5 @@
 name: FastCrafting
-version: 1.0.0
+version: 1.1.0
 main: me.patrykanuszczyk.spigot.fastcrafting.FastCraftingPlugin
 description: Allows you to open workbench by clicking RMB on it in the inventory!
 author: TheChilliPL
