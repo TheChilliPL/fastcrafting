@@ -21,7 +21,10 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
 
     private fun modifyWorkbench(stack: ItemStack) {
         val meta = stack.itemMeta ?: return
-        meta.customTagContainer.setCustomTag(plugin.workbenchTagKey, ItemTagType.INTEGER, 1)
+        if(plugin.config.getBoolean("use_nbt", true))
+            meta.customTagContainer.setCustomTag(plugin.workbenchTagKey, ItemTagType.INTEGER, 1)
+        else
+            meta.customTagContainer.removeCustomTag(plugin.workbenchTagKey)
         val lore = plugin.getMessage("workbench_lore")
         meta.lore = if(lore.isEmpty()) emptyList() else listOf(plugin.getMessage("workbench_lore"))
         stack.itemMeta = meta
@@ -32,6 +35,7 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
         if(stack.type != Material.CRAFTING_TABLE) return false
         val meta = stack.itemMeta
         if(meta?.hasLore() != true) return true
+        if(meta.lore!!.contains(plugin.getMessage("workbench_lore"))) return true
         val tagValue = meta.customTagContainer.getOrDefault(plugin.workbenchTagKey, ItemTagType.INTEGER, 0)
         return tagValue != 0
     }
@@ -54,7 +58,7 @@ class FastCraftingListener(val plugin: FastCraftingPlugin) : Listener {
     }
 
     @EventHandler
-    fun onPLayerJoin(event: PlayerJoinEvent) {
+    fun onPlayerJoin(event: PlayerJoinEvent) {
         if(!plugin.config.getBoolean("listeners.player_joined", false)) return
 
         modifyWorkbenches(event.player.inventory)

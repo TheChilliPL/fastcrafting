@@ -1,4 +1,4 @@
-# Specifies whether to add lore when an event happens.
+# Specifies whether to add lore and NBT when an event happens (or remove them if they're disabled).
 listeners:
   # When an inventory is opened. Doesn't include player inventory, but only inventories like chests.
   # It scans every item in the inventory and adds a lore if it's a workbench.
@@ -13,6 +13,8 @@ listeners:
   # When a workbench is picked up by a player.
   # Includes items picked up after breaking a block.
   item_pickup: true
+# Adds NBT tags to the workbenches so in case of, e.g. changing the lore, they will get detected correctly.
+use_nbt: true
 # Messages the plugin uses.
 messages:
   # Output of the /fastcrafting info command.
